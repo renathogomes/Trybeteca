@@ -6,13 +6,13 @@ services:
     # Imagem base do container
     image: node:16
     # Nome do container para facilitar execução
-    container_name: trybesmith
+    container_name: trybe_financas
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
     stdin_open: true
     # Substitui o comando padrão da imagem do node
-    command: bash
+    command: npm run dev
     # Restarta a imagem caso algo a faça parar
     restart: always
     # Diretório padrão de execução
@@ -40,7 +40,7 @@ services:
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: trybesmith_db
+    container_name: trybe_financas_db
     image: mysql:8.0.21
     restart: always
     # Lista de portas mapeadas de dentro para fora do container
@@ -57,7 +57,7 @@ networks:
   # Rede padrão, criada automaticamente
   default:
     # Dá um nome específico à rede padrão
-    name: trybesmith_net
+    name: trybe_financas_net
 
 # As chaves `tty`, `stdin_open` e `command` fazem com que o container fique
 # rodando em segundo plano, bem como tornam possível o uso do comando
