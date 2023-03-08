@@ -4,7 +4,7 @@ services:
   # Serviço que irá rodar o node
   node:
     # Imagem base do container
-    image: node:16
+    build: .
     # Nome do container para facilitar execução
     container_name: trybe_financas
     # Mesmo que `docker run -t`
