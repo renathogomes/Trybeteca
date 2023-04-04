@@ -33,9 +33,11 @@ services:
       - 3001:3001
     # Configura as variáveis de ambiente dentro do container
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: localhost
+      DB_NAME: trybe_financas_api
+      DB_PORT: 3306
       JWT_SECRET: secret
 
   # Serviço que irá rodar o banco de dados
