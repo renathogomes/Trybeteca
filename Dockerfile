@@ -1,15 +1,15 @@
-FROM node:16
+FROM node:16.14
 
-# o expose serve apenas para sinalizar em qual porta rodaremos o container
-# a definição da porta se dá no arquivo docker-compose.yaml
-EXPOSE 3001
+RUN mkdir -p /app && chown -R node:node /app
+USER node
+WORKDIR /app
 
-WORKDIR /
-
-# aqui copiamos apenas o package.json e o package-lock.json, pois assim
-# garantimos que quando as dependências forem instaladas, suas versões não vão ser alteradas.
-COPY package*.json ./
-
+COPY --chown=node:node package*.json ./
 RUN npm install
 
-COPY . .
+COPY --chown=node:node src src
+COPY --chown=node:node .editorconfig .
+COPY --chown=node:node .eslintignore .
+COPY --chown=node:node .eslintrc.json .
+COPY --chown=node:node .sequelizerc .
+COPY --chown=node:node tsconfig.json .
