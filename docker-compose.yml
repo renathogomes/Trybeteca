@@ -15,7 +15,7 @@ services:
     # Mesmo que `docker run -i`
     stdin_open: true
     # Substitui o comando padrão da imagem do node
-    command: npm run dev # você pode subistituir `bash` por `npm run dev` para iniciar a API quando container for iniciado  
+    command: bash # você pode subistituir `bash` por `npm run dev` para iniciar a API quando container for iniciado  
     # Restarta a imagem caso algo a faça parar
     restart: always
     # Diretório padrão de execução
@@ -45,7 +45,7 @@ services:
       DB_PORT: 3306
       JWT_SECRET: secret
     networks:
-      # Conecta esse serviço com a rede que criada
+      # Conecta esse serviço com a rede que será criada
       - trybe_financas_net
 
   # Serviço que irá rodar o banco de dados
@@ -62,6 +62,10 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
+    networks:
+      # Conecta esse serviço com a rede que será criada 
+      - trybe_financas_net
+
 
 # Lista de redes que os containeres irão utilizar
 networks:
