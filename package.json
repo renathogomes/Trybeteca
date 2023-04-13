@@ -4,10 +4,10 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "env $(cat .env) ts-node src/index.ts",
+    "start": "ts-node src/index.ts",
     "dev": "nodemon --watch \"./src/**\" --exec \"ts-node src/index.ts\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "db:reset": "npx -y tsc && env $(cat .env) npx sequelize-cli db:drop && env $(cat .env) npx sequelize-cli db:create && env $(cat .env) npx sequelize-cli db:migrate && env $(cat .env) npx sequelize-cli db:seed:all"
+    "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",
