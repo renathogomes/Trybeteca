@@ -9,7 +9,7 @@ services:
     # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
     user: node
     # Nome do container para facilitar execução
-    container_name: transactions_app
+    container_name: transactions_api
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
