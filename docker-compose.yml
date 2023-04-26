@@ -9,7 +9,7 @@ services:
     # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
     user: node
     # Nome do container para facilitar execução
-    container_name: trybe_financas
+    container_name: transactions_app
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
@@ -41,18 +41,15 @@ services:
       DB_USER: root
       DB_PASSWORD: password
       DB_HOST: db
-      DB_NAME: trybe_financas_api
+      DB_NAME: transactions_api
       DB_PORT: 3306
       JWT_SECRET: secret
-    networks:
-      # Conecta esse serviço com a rede que será criada
-      - trybe_financas_net
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: trybe_financas_db
+    container_name: transactions_db
     image: mysql:8.0.21
-    platform: linux/amd64
+    # platform: linux/amd64
     restart: always
     # Lista de portas mapeadas de dentro para fora do container
     # na notação porta_de_fora:porta_de_dentro
@@ -62,24 +59,3 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
-    networks:
-      # Conecta esse serviço com a rede que será criada 
-      - trybe_financas_net
-
-
-# Lista de redes que os containeres irão utilizar
-networks:
-  # Cria a rede que conecta os serviços `db` e `node` 
-  trybe_financas_net:
-    # Específica o drive da rede
-    driver: bridge
-
-# As chaves `tty`, `stdin_open` e `command` fazem com que o container fique
-# rodando em segundo plano, bem como tornam possível o uso do comando
-# `docker attach`, já deixando o terminal atual acoplado ao container, direto
-# no bash. Apesar disso, utilizar o attach mais de uma vez irá replicar o
-# terminal, portanto é melhor utilizar o comando `docker exec`.
-
-# A renomeação da rede padrão é feita pois caso contrário o nome da rede será
-# o nome do diretório onde o arquivo atual se encontra, o que pode dificultar
-# a listagem individual.
