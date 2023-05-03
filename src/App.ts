@@ -13,7 +13,6 @@ class App {
     this.app.get('/', (_req, res) => res.status(200).send('Trybeteca API no ar!'));
   }
 
-
   public start(PORT: string | number):void {
     this.app.listen(PORT, () => console.log(`Trybeteca API no ar na porta ${PORT}!`));
   }
