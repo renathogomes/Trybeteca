@@ -9,20 +9,20 @@ services:
     # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
     user: node
     # Nome do container para facilitar execução
-    container_name: transactions_api
+    container_name: library_api
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
     stdin_open: true
     # Substitui o comando padrão da imagem do node
-    command: bash # você pode subistituir `bash` por `npm run dev` para iniciar a API quando container for iniciado  
+    command: bash # você pode subistituir `bash` por `npm run dev` para iniciar a API quando container for iniciado
     # Restarta a imagem caso algo a faça parar
     restart: always
     # Diretório padrão de execução
     working_dir: /app
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
     volumes:
-      # Monta o diretório atual, com todos os dados do projeto, 
+      # Monta o diretório atual, com todos os dados do projeto,
       # dentro do diretório /app
       - ./:/app
       - ./src/:/app/src
@@ -41,13 +41,13 @@ services:
       DB_USER: root
       DB_PASSWORD: password
       DB_HOST: db
-      DB_NAME: transactions_api
+      DB_NAME: library_api
       DB_PORT: 3306
       JWT_SECRET: secret
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: transactions_db
+    container_name: library_db
     image: mysql:8.0.21
     # platform: linux/amd64
     restart: always
