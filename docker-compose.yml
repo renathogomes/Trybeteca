@@ -24,7 +24,6 @@ services:
     volumes:
       # Monta o diretório atual, com todos os dados do projeto,
       # dentro do diretório /app
-      - ./:/app
       - ./src/:/app/src
       - ./tests/:/app/tests
     # Lista de serviços do qual este serviço depende
