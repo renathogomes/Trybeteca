@@ -48,7 +48,7 @@ services:
   # Serviço que irá rodar o banco de dados
   db:
     container_name: library_db
-    image: mysql:8.0.21
+    image: mysql:8.0.32
     # platform: linux/amd64
     restart: always
     # Lista de portas mapeadas de dentro para fora do container
