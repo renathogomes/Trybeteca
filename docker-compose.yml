@@ -3,7 +3,7 @@ version: "3"
 services:
   node:
     image: node:16.14-slim
-    container_name: library_api
+    container_name: trybeteca_api
     command: npm run dev
     working_dir: /app
     volumes:
@@ -17,12 +17,12 @@ services:
       DB_USER: root
       DB_PASSWORD: password
       DB_HOST: db
-      DB_NAME: library_db
+      DB_NAME: trybeteca_db
       DB_PORT: 3306
       JWT_SECRET: secret
 
   db:
-    container_name: library_db
+    container_name: trybeteca_db
     image: mysql:8.0.32
     restart: always
     ports:

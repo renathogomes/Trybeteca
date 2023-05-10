@@ -1,5 +1,5 @@
 {
-  "name": "library_api",
+  "name": "trybeteca_api",
   "main": "src/server.js",
   "version": "1.0.0",
   "scripts": {
