@@ -2,15 +2,13 @@ version: "3"
 
 services:
   node:
-    image: node:16.14-slim
+    build: .
     container_name: trybeteca_api
-    command: npm run dev
+    command: run dev
     working_dir: /app
-    # Usuário linux padrão do container, não é recomendado usar root
-    # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
-    user: node
     volumes:
-      - ./:/app
+      - ./src:/app/src
+      - ./tests:/app/tests
     depends_on:
       db:
         condition: service_healthy
